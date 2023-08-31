@@ -51,8 +51,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         favMovies: [...state.favMovies, currentMovie],
-        movies: state.movies.filter((m) => m.id !== currentMovie.id),
-        order: state.order === 0 ? 0 : state.order - 1,
+        //movies: state.movies.filter((m) => m.id !== currentMovie.id),
+        //order: state.order === 0 ? 0 : state.order - 1,
       };
     default:
       return state;
