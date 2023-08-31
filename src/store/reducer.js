@@ -1,5 +1,5 @@
 import { movies } from "../movies.js";
-import { NEXT_MOVIE, PREV_MOVIE } from "./actions.js";
+import { ADD_FAV, NEXT_MOVIE, PREV_MOVIE } from "./actions.js";
 
 const initialState = {
   movies: movies,
@@ -46,6 +46,14 @@ const reducer = (state = initialState, action) => {
           order: initialState.order,
         };
       }
+    case ADD_FAV:
+      const currentMovie = state.movies[state.order];
+      return {
+        ...state,
+        favMovies: [...state.favMovies, currentMovie],
+        movies: state.movies.filter((m) => m.id !== currentMovie.id),
+        order: state.order === 0 ? 0 : state.order - 1,
+      };
     default:
       return state;
   }
